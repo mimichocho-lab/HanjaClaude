@@ -1,0 +1,10 @@
+{
+  "sessionCount": 1,
+  "lastSession": {
+    "startedAt": "2026-03-05T02:47:39.392Z",
+    "platform": "claude",
+    "level": "Starter"
+  },
+  "currentFeature": "HanjaClaude",
+  "phase": "plan"
+}

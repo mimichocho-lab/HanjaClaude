@@ -1,0 +1,24 @@
+{
+  "version": "2.0",
+  "lastUpdated": "2026-03-05T02:47:39.391Z",
+  "activeFeatures": ["HanjaClaude"],
+  "primaryFeature": "HanjaClaude",
+  "features": {
+    "HanjaClaude": {
+      "phase": "plan",
+      "startedAt": "2026-03-05T02:47:39.391Z",
+      "planPath": "docs/01-plan/features/HanjaClaude.plan.md"
+    }
+  },
+  "pipeline": {
+    "currentPhase": 1,
+    "level": "Starter",
+    "phaseHistory": []
+  },
+  "session": {
+    "startedAt": "2026-03-05T02:47:39.391Z",
+    "onboardingCompleted": false,
+    "lastActivity": "2026-03-05T02:47:39.391Z"
+  },
+  "history": []
+}
