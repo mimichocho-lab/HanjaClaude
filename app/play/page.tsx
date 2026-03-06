@@ -30,6 +30,7 @@ function PlayContent() {
     playCards,
     currentIndex,
     face,
+    animated,
     done,
     wrongAdded,
     setWrongAdded,
@@ -108,7 +109,7 @@ function PlayContent() {
         onTouchStart={(e) => onTouchStart(e.touches[0].clientX)}
         onTouchEnd={(e) => onTouchEnd(e.changedTouches[0].clientX)}
       >
-        <FlipCard card={currentCard} face={face} onFlip={flipCard} />
+        <FlipCard card={currentCard} face={face} onFlip={flipCard} animated={animated} />
       </div>
 
       {/* 하단 버튼 */}

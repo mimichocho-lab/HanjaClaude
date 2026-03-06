@@ -1,9 +1,9 @@
 {
-  "sessionCount": 2,
+  "sessionCount": 3,
   "lastSession": {
-    "startedAt": "2026-03-05T22:34:05.881Z",
+    "startedAt": "2026-03-06T01:10:30.733Z",
     "platform": "claude",
-    "level": "Starter"
+    "level": "Dynamic"
   },
   "currentFeature": "HanjaClaude",
   "phase": "design",

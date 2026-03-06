@@ -11,6 +11,7 @@ export function usePlaySession(cards: HanjaCard[], options: PlayOptions) {
   const [face, setFace] = useState<CardFace>("front");
   const [done, setDone] = useState(false);
   const [wrongAdded, setWrongAdded] = useState(false);
+  const [animated, setAnimated] = useState(false);
 
   const touchStartX = useRef(0);
   const startFaceRef = useRef<CardFace>("front");
@@ -38,10 +39,14 @@ export function usePlaySession(cards: HanjaCard[], options: PlayOptions) {
   const goToCard = (index: number) => {
     setCurrentIndex(index);
     setFace(startFaceRef.current);
+    setAnimated(false);
     setWrongAdded(false);
   };
 
-  const flipCard = () => setFace((f) => (f === "front" ? "back" : "front"));
+  const flipCard = () => {
+    setAnimated(true);
+    setFace((f) => (f === "front" ? "back" : "front"));
+  };
 
   const handleSwipe = (deltaX: number) => {
     if (Math.abs(deltaX) < SWIPE_THRESHOLD) return;
@@ -65,6 +70,7 @@ export function usePlaySession(cards: HanjaCard[], options: PlayOptions) {
     playCards,
     currentIndex,
     face,
+    animated,
     done,
     wrongAdded,
     setWrongAdded,

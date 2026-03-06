@@ -7,9 +7,10 @@ interface Props {
   card: HanjaCard;
   face: CardFace;
   onFlip: () => void;
+  animated?: boolean;
 }
 
-export default function FlipCard({ card, face, onFlip }: Props) {
+export default function FlipCard({ card, face, onFlip, animated = true }: Props) {
   const isFlipped = face === "back";
 
   return (
@@ -20,7 +21,7 @@ export default function FlipCard({ card, face, onFlip }: Props) {
     >
       <motion.div
         animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.4, ease: "easeInOut" }}
+        transition={animated ? { duration: 0.4, ease: "easeInOut" } : { duration: 0 }}
         style={{ transformStyle: "preserve-3d", position: "relative" }}
         className="w-full aspect-[3/4]"
       >
