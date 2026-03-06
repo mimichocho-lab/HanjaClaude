@@ -10,19 +10,20 @@ export function usePlaySession(cards: HanjaCard[], options: PlayOptions) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [face, setFace] = useState<CardFace>("front");
   const [done, setDone] = useState(false);
-  const [wrongAdded, setWrongAdded] = useState(false);
   const [animated, setAnimated] = useState(false);
 
   const touchStartX = useRef(0);
-  const startFaceRef = useRef<CardFace>("front");
+  const optionsRef = useRef(options);
+  useEffect(() => { optionsRef.current = options; }, [options]);
+
+  const resolveStartFace = (): CardFace => {
+    const sf = optionsRef.current.startFace;
+    return sf === "random" ? (Math.random() < 0.5 ? "front" : "back") : sf;
+  };
 
   useEffect(() => {
-    const resolved: CardFace =
-      options.startFace === "random"
-        ? Math.random() < 0.5 ? "front" : "back"
-        : options.startFace;
-    startFaceRef.current = resolved;
-    setFace(resolved);
+    setFace(resolveStartFace());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [options.startFace]);
 
   useEffect(() => {
@@ -36,11 +37,17 @@ export function usePlaySession(cards: HanjaCard[], options: PlayOptions) {
     setDone(false);
   }, [cards, options.order]);
 
+  // 버튼 이동: 시작면으로 리셋 (F-09)
   const goToCard = (index: number) => {
     setCurrentIndex(index);
-    setFace(startFaceRef.current);
+    setFace(resolveStartFace());
     setAnimated(false);
-    setWrongAdded(false);
+  };
+
+  // 스와이프 이동: 현재 면 유지 (F-13)
+  const swipeToCard = (index: number) => {
+    setCurrentIndex(index);
+    setAnimated(false);
   };
 
   const flipCard = () => {
@@ -51,9 +58,9 @@ export function usePlaySession(cards: HanjaCard[], options: PlayOptions) {
   const handleSwipe = (deltaX: number) => {
     if (Math.abs(deltaX) < SWIPE_THRESHOLD) return;
     if (deltaX > 0) {
-      if (currentIndex > 0) goToCard(currentIndex - 1);
+      if (currentIndex > 0) swipeToCard(currentIndex - 1);
     } else {
-      if (currentIndex < playCards.length - 1) goToCard(currentIndex + 1);
+      if (currentIndex < playCards.length - 1) swipeToCard(currentIndex + 1);
       else setDone(true);
     }
   };
@@ -72,8 +79,6 @@ export function usePlaySession(cards: HanjaCard[], options: PlayOptions) {
     face,
     animated,
     done,
-    wrongAdded,
-    setWrongAdded,
     setDone,
     goToCard,
     flipCard,

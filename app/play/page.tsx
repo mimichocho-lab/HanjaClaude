@@ -14,7 +14,7 @@ function PlayContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { cards: allCards, loading } = useHanjaData();
-  const { addWrongId } = useWrongAnswers();
+  const { wrongIds, addWrongId, removeWrongId } = useWrongAnswers();
   const { options } = usePlayOptions();
   const [filteredCards, setFilteredCards] = useState<HanjaCard[]>([]);
 
@@ -32,8 +32,6 @@ function PlayContent() {
     face,
     animated,
     done,
-    wrongAdded,
-    setWrongAdded,
     setDone,
     goToCard,
     flipCard,
@@ -41,10 +39,16 @@ function PlayContent() {
     onTouchEnd,
   } = usePlaySession(filteredCards, options);
 
-  const handleAddWrong = () => {
-    if (!playCards[currentIndex]) return;
-    addWrongId(playCards[currentIndex].id);
-    setWrongAdded(true);
+  const currentCard = playCards[currentIndex];
+  const isWrong = currentCard ? wrongIds.includes(currentCard.id) : false;
+
+  const handleToggleWrong = () => {
+    if (!currentCard) return;
+    if (isWrong) {
+      removeWrongId(currentCard.id);
+    } else {
+      addWrongId(currentCard.id);
+    }
   };
 
   if (loading || playCards.length === 0) {
@@ -77,8 +81,6 @@ function PlayContent() {
       </div>
     );
   }
-
-  const currentCard = playCards[currentIndex];
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -123,14 +125,13 @@ function PlayContent() {
         </button>
         <button
           className={`px-4 py-3 rounded-xl text-sm border transition-colors ${
-            wrongAdded
-              ? "border-red-300 bg-red-50 text-red-400"
-              : "border-red-400 text-red-500 active:bg-red-50"
+            isWrong
+              ? "border-red-400 bg-red-50 text-red-500"
+              : "border-gray-300 text-gray-500 active:bg-gray-100"
           }`}
-          onClick={handleAddWrong}
-          disabled={wrongAdded}
+          onClick={handleToggleWrong}
         >
-          {wrongAdded ? "오답 추가됨" : "오답"}
+          {isWrong ? "오답 해제" : "오답"}
         </button>
         <button
           className="flex-1 py-3 bg-blue-500 text-white rounded-xl text-sm font-semibold active:bg-blue-600"
