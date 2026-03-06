@@ -13,11 +13,11 @@
   "features": {
     "HanjaClaude": {
       "phase": "archived",
-      "matchRate": 96,
+      "matchRate": 98,
       "iterationCount": 0,
-      "startedAt": "2026-03-05T02:47:39.391Z",
+      "startedAt": "2026-03-06T16:07:08.621Z",
       "archivedAt": "2026-03-07T00:00:00.000Z",
-      "archivedTo": "docs/archive/2026-03/HanjaClaude-v4/"
+      "archivedTo": "docs/archive/2026-03/HanjaClaude-v5/"
     },
     "hanjaclaude": {
       "phase": "do",
