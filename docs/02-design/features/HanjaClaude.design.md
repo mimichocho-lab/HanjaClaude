@@ -144,6 +144,8 @@ useHanjaData() + useSearchParams("ids") → filteredCards
 usePlayOptions() → options
 useWrongAnswers() → wrongIds, addWrongId, removeWrongId
 usePlaySession(filteredCards, options) → 세션 상태
+  - options.order === "random" → 진입 시 filteredCards를 셔플하여 playCards 생성
+  - options.order === "sequential" → filteredCards 원래 순서 유지
 
 [상단] 홈 버튼 | N/전체 | 오답방 버튼
 [프로그레스바] ProgressBar
@@ -168,14 +170,15 @@ useSearchParams("ids") → idsParam (홈에서 전달)
 뜻음 표시: [보이기] [숨기기] (토글)  ← F-08
 
 현재 선택 목록 URL 복사 (F-09):
-  URL 표시: `${origin}/?ids=${idsParam}` 형태
+  URL 표시: `${origin}${basePath}/?ids=${idsParam}` 형태
   [복사] 버튼 → navigator.clipboard.writeText(fullUrl)
 
 [홈으로] 버튼  ← F-10
 ```
 
 **F-09 URL 복사 흐름:**
-- `window.location.origin + "/?ids=" + idsParam` 를 클립보드에 복사
+- `window.location.origin + process.env.NEXT_PUBLIC_BASE_PATH + "/?ids=" + idsParam` 를 클립보드에 복사
+- `NEXT_PUBLIC_BASE_PATH`: 로컬="" / GitHub Pages="/HanjaClaude"
 - 복사 후 "복사됨" 피드백 표시
 
 ### 오답 한자방 (app/wrong/page.tsx)
@@ -232,7 +235,7 @@ URL Query
 | goToCard vs swipeToCard 분리 | 버튼 이동은 시작면 리셋, 스와이프는 현재 면 유지 (F-16) |
 | optionsRef + resolveStartFace | 카드마다 독립 랜덤 결정, 클로저 stale 방지 (F-12) |
 | isWrong을 wrongIds로 계산 | 실시간 토글 상태 반영 (F-18) |
-| URL 전체 복사 (F-09) | 붙여넣기만으로 동일 선택 상태 재현 가능 |
+| URL 전체 복사 (F-09) | 붙여넣기만으로 동일 선택 상태 재현 가능. NEXT_PUBLIC_BASE_PATH로 환경별 URL 분기 |
 | 홈 URL params 초기화 | 공유 URL로 바로 해당 카드 학습 진입 가능 |
 | F-10 제거 | URL 공유로 대체 가능, 텍스트 입력 UX 단순화 |
 
