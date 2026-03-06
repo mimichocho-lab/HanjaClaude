@@ -6,6 +6,6 @@
     "level": "Dynamic"
   },
   "currentFeature": "HanjaClaude",
-  "phase": "design",
-  "matchRate": 93
+  "phase": "check",
+  "matchRate": 100
 }
