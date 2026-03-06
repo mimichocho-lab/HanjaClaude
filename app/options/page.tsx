@@ -15,7 +15,7 @@ function OptionsContent() {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
-    const url = `${window.location.origin}/?ids=${idsParam}`;
+    const url = new URL(`../?ids=${idsParam}`, window.location.href).toString();
     await navigator.clipboard.writeText(url);
     setCopied(true);
     setTimeout(() => setCopied(false), 1500);
