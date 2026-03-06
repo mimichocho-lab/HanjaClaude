@@ -1,13 +1,71 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-03-05T02:47:39.391Z",
-  "activeFeatures": ["HanjaClaude"],
+  "lastUpdated": "2026-03-06T00:27:15.676Z",
+  "activeFeatures": [
+    "HanjaClaude",
+    "hanjaclaude",
+    "options",
+    "play",
+    "wrong"
+  ],
   "primaryFeature": "HanjaClaude",
   "features": {
     "HanjaClaude": {
       "phase": "plan",
       "startedAt": "2026-03-05T02:47:39.391Z",
       "planPath": "docs/01-plan/features/HanjaClaude.plan.md"
+    },
+    "hanjaclaude": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-06T00:24:08.517Z",
+        "lastUpdated": "2026-03-06T00:27:15.676Z"
+      },
+      "lastFile": "/home/hapines/claudeprojects/hanjaclaude/app/page.tsx"
+    },
+    "options": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-06T00:25:55.267Z",
+        "lastUpdated": "2026-03-06T00:25:55.267Z"
+      },
+      "lastFile": "/home/hapines/claudeprojects/hanjaclaude/app/options/page.tsx"
+    },
+    "play": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-06T00:26:19.612Z",
+        "lastUpdated": "2026-03-06T00:26:19.612Z"
+      },
+      "lastFile": "/home/hapines/claudeprojects/hanjaclaude/app/play/page.tsx"
+    },
+    "wrong": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-06T00:26:31.535Z",
+        "lastUpdated": "2026-03-06T00:26:31.535Z"
+      },
+      "lastFile": "/home/hapines/claudeprojects/hanjaclaude/app/wrong/page.tsx"
     }
   },
   "pipeline": {
@@ -18,7 +76,104 @@
   "session": {
     "startedAt": "2026-03-05T02:47:39.391Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-03-05T02:47:39.391Z"
+    "lastActivity": "2026-03-06T00:27:15.676Z"
   },
-  "history": []
+  "history": [
+    {
+      "timestamp": "2026-03-06T00:24:08.517Z",
+      "feature": "hanjaclaude",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-06T00:24:12.775Z",
+      "feature": "hanjaclaude",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-06T00:24:33.796Z",
+      "feature": "hanjaclaude",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-06T00:24:38.198Z",
+      "feature": "hanjaclaude",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-06T00:24:41.922Z",
+      "feature": "hanjaclaude",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-06T00:24:49.304Z",
+      "feature": "hanjaclaude",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-06T00:24:54.708Z",
+      "feature": "hanjaclaude",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-06T00:25:03.924Z",
+      "feature": "hanjaclaude",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-06T00:25:14.005Z",
+      "feature": "hanjaclaude",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-06T00:25:21.509Z",
+      "feature": "hanjaclaude",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-06T00:25:33.779Z",
+      "feature": "hanjaclaude",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-06T00:25:44.139Z",
+      "feature": "hanjaclaude",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-06T00:25:55.267Z",
+      "feature": "options",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-06T00:26:19.612Z",
+      "feature": "play",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-06T00:26:31.535Z",
+      "feature": "wrong",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-06T00:27:15.676Z",
+      "feature": "hanjaclaude",
+      "phase": "do",
+      "action": "updated"
+    }
+  ]
 }
