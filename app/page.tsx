@@ -1,16 +1,24 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useHanjaData } from "@/hooks/useHanjaData";
 import { useSelection } from "@/hooks/useSelection";
 import { usePlayOptions } from "@/hooks/usePlayOptions";
 import HanjaCardCell from "@/components/HanjaCard";
 import BottomBar from "@/components/BottomBar";
 
-export default function HomePage() {
+function HomeContent() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { cards, loading } = useHanjaData();
-  const { selectedIds, selectedIdsArray, toggleCard, toggleAll } = useSelection(cards);
+
+  const idsParam = searchParams.get("ids");
+  const initialIds = idsParam
+    ? idsParam.split(",").map(Number).filter((n) => n >= 1 && n <= 90)
+    : undefined;
+
+  const { selectedIds, selectedIdsArray, toggleCard, toggleAll } = useSelection(cards, initialIds);
   const { options } = usePlayOptions();
 
   const handlePlay = () => {
@@ -68,5 +76,13 @@ export default function HomePage() {
         onPlay={handlePlay}
       />
     </div>
+  );
+}
+
+export default function HomePage() {
+  return (
+    <Suspense fallback={<div className="flex items-center justify-center h-screen"><p className="text-gray-400">로딩 중...</p></div>}>
+      <HomeContent />
+    </Suspense>
   );
 }

@@ -5,10 +5,16 @@ import type { HanjaCard } from "@/types/hanja";
 
 const KEY = "hanjaSelectedIds";
 
-export function useSelection(cards: HanjaCard[]) {
+export function useSelection(cards: HanjaCard[], initialIds?: number[]) {
   const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set());
 
   useEffect(() => {
+    if (initialIds && initialIds.length > 0) {
+      const next = new Set(initialIds);
+      setSelectedIds(next);
+      localStorage.setItem(KEY, JSON.stringify(Array.from(next)));
+      return;
+    }
     const stored = localStorage.getItem(KEY);
     if (stored) {
       const ids: number[] = JSON.parse(stored);

@@ -12,22 +12,13 @@ function OptionsContent() {
   const idsParam = searchParams.get("ids") ?? "";
   const selectedCount = idsParam ? idsParam.split(",").filter(Boolean).length : 0;
 
-  const [pasteInput, setPasteInput] = useState("");
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(idsParam);
+    const url = `${window.location.origin}/?ids=${idsParam}`;
+    await navigator.clipboard.writeText(url);
     setCopied(true);
     setTimeout(() => setCopied(false), 1500);
-  };
-
-  const handleApply = () => {
-    const ids = pasteInput
-      .split(/[,\s]+/)
-      .map(Number)
-      .filter((n) => n >= 1 && n <= 90);
-    localStorage.setItem("hanjaSelectedIds", JSON.stringify(ids));
-    router.push("/");
   };
 
   return (
@@ -109,12 +100,12 @@ function OptionsContent() {
           </div>
         </div>
 
-        {/* 선택 목록 복사 (F-09) */}
+        {/* 선택 목록 URL 복사 (F-09) */}
         <div className="bg-white rounded-xl p-4 shadow-sm">
-          <p className="text-sm font-semibold text-gray-700 mb-2">선택 목록 복사</p>
+          <p className="text-sm font-semibold text-gray-700 mb-2">선택 목록 URL 복사</p>
           <div className="flex gap-2 items-center">
             <p className="flex-1 text-xs text-gray-500 bg-gray-50 rounded-lg px-3 py-2 font-mono truncate">
-              {idsParam || "선택된 카드 없음"}
+              {idsParam ? `…/?ids=${idsParam}` : "선택된 카드 없음"}
             </p>
             <button
               className="px-3 py-2 rounded-lg text-sm border border-gray-300 text-gray-600 active:bg-gray-100 flex-shrink-0"
@@ -122,27 +113,6 @@ function OptionsContent() {
               disabled={!idsParam}
             >
               {copied ? "복사됨" : "복사"}
-            </button>
-          </div>
-        </div>
-
-        {/* 선택 목록 반영 (F-10) */}
-        <div className="bg-white rounded-xl p-4 shadow-sm">
-          <p className="text-sm font-semibold text-gray-700 mb-2">선택 목록 반영</p>
-          <div className="flex gap-2">
-            <input
-              type="text"
-              className="flex-1 text-sm bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 outline-none focus:border-blue-400"
-              placeholder="카드 번호 붙여넣기 (예: 1,2,3)"
-              value={pasteInput}
-              onChange={(e) => setPasteInput(e.target.value)}
-            />
-            <button
-              className="px-3 py-2 rounded-lg text-sm bg-blue-500 text-white active:bg-blue-600 flex-shrink-0"
-              onClick={handleApply}
-              disabled={!pasteInput.trim()}
-            >
-              반영
             </button>
           </div>
         </div>
