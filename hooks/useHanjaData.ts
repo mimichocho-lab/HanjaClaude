@@ -9,10 +9,16 @@ export function useHanjaData() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    loadHanjaData().then((data) => {
-      setCards(data);
-      setLoading(false);
-    });
+    loadHanjaData()
+      .then((data) => {
+        setCards(data);
+      })
+      .catch((err) => {
+        console.error("한자 데이터 로드 실패:", err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
   return { cards, loading };
