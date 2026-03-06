@@ -68,6 +68,7 @@
 - 하단에 크고 명확한 "홈으로" 버튼
 - 단순하고 깔끔한 레이아웃 (아이도 직관적으로 조작 가능)
 - 현재 전체 URL 은 https://mimichocho-lab.github.io/HanjaClaude/ 이다. (https://mimichocho-lab.github.io/ 이 아니다)
+- github 에서는 ../?ids= 로 전달하면 https://mimichocho-lab.github.io/ 이 된다. ?ids= 로 전달해야 한다.
 
 ---
 
