@@ -1,14 +1,14 @@
 "use client";
 
-import { useState, useEffect, useRef, Suspense } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useHanjaData } from "@/hooks/useHanjaData";
 import { useWrongAnswers } from "@/hooks/useWrongAnswers";
 import { usePlayOptions } from "@/hooks/usePlayOptions";
+import { usePlaySession } from "@/hooks/usePlaySession";
 import FlipCard from "@/components/FlipCard";
-import type { CardFace, HanjaCard } from "@/types/hanja";
-
-const SWIPE_THRESHOLD = 50;
+import ProgressBar from "@/components/ProgressBar";
+import type { HanjaCard } from "@/types/hanja";
 
 function PlayContent() {
   const router = useRouter();
@@ -16,62 +16,29 @@ function PlayContent() {
   const { cards: allCards, loading } = useHanjaData();
   const { addWrongId } = useWrongAnswers();
   const { options } = usePlayOptions();
+  const [filteredCards, setFilteredCards] = useState<HanjaCard[]>([]);
 
-  const [playCards, setPlayCards] = useState<HanjaCard[]>([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [face, setFace] = useState<CardFace>("front");
-  const [done, setDone] = useState(false);
-  const [wrongAdded, setWrongAdded] = useState(false);
-
-  const touchStartX = useRef(0);
-  const startFaceRef = useRef<CardFace>("front");
-
-  // 옵션에서 시작 면 결정
-  useEffect(() => {
-    if (options.startFace === "random") {
-      startFaceRef.current = Math.random() < 0.5 ? "front" : "back";
-    } else {
-      startFaceRef.current = options.startFace;
-    }
-    setFace(startFaceRef.current);
-  }, [options.startFace]);
-
-  // 선택된 카드 구성
   useEffect(() => {
     if (loading || allCards.length === 0) return;
     const idsParam = searchParams.get("ids");
     if (!idsParam) return;
     const ids = new Set(idsParam.split(",").map(Number));
-    let filtered = allCards.filter((c) => ids.has(c.id));
-    if (options.order === "random") {
-      filtered = [...filtered].sort(() => Math.random() - 0.5);
-    }
-    setPlayCards(filtered);
-    setCurrentIndex(0);
-    setDone(false);
-  }, [loading, allCards, searchParams, options.order]);
+    setFilteredCards(allCards.filter((c) => ids.has(c.id)));
+  }, [loading, allCards, searchParams]);
 
-  // 카드 이동 시 시작 면으로 리셋
-  const goToCard = (index: number) => {
-    setCurrentIndex(index);
-    setFace(startFaceRef.current);
-    setWrongAdded(false);
-  };
-
-  const handleSwipe = (deltaX: number) => {
-    if (Math.abs(deltaX) < SWIPE_THRESHOLD) return;
-    if (deltaX > 0) {
-      // 오른쪽 → 이전
-      if (currentIndex > 0) goToCard(currentIndex - 1);
-    } else {
-      // 왼쪽 → 다음
-      if (currentIndex < playCards.length - 1) {
-        goToCard(currentIndex + 1);
-      } else {
-        setDone(true);
-      }
-    }
-  };
+  const {
+    playCards,
+    currentIndex,
+    face,
+    done,
+    wrongAdded,
+    setWrongAdded,
+    setDone,
+    goToCard,
+    flipCard,
+    onTouchStart,
+    onTouchEnd,
+  } = usePlaySession(filteredCards, options);
 
   const handleAddWrong = () => {
     if (!playCards[currentIndex]) return;
@@ -133,27 +100,15 @@ function PlayContent() {
         </button>
       </div>
 
-      {/* 진행 바 */}
-      <div className="h-1 bg-gray-200">
-        <div
-          className="h-full bg-blue-400 transition-all"
-          style={{ width: `${((currentIndex + 1) / playCards.length) * 100}%` }}
-        />
-      </div>
+      <ProgressBar current={currentIndex + 1} total={playCards.length} />
 
       {/* 카드 영역 */}
       <div
         className="flex-1 flex flex-col items-center justify-center px-6 py-8"
-        onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; }}
-        onTouchEnd={(e) => {
-          handleSwipe(touchStartX.current - e.changedTouches[0].clientX);
-        }}
+        onTouchStart={(e) => onTouchStart(e.touches[0].clientX)}
+        onTouchEnd={(e) => onTouchEnd(e.changedTouches[0].clientX)}
       >
-        <FlipCard
-          card={currentCard}
-          face={face}
-          onFlip={() => setFace((f) => (f === "front" ? "back" : "front"))}
-        />
+        <FlipCard card={currentCard} face={face} onFlip={flipCard} />
       </div>
 
       {/* 하단 버튼 */}

@@ -1,37 +1,19 @@
 "use client";
 
-import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useHanjaData } from "@/hooks/useHanjaData";
+import { useSelection } from "@/hooks/useSelection";
 import HanjaCardCell from "@/components/HanjaCard";
 import BottomBar from "@/components/BottomBar";
 
 export default function HomePage() {
   const router = useRouter();
   const { cards, loading } = useHanjaData();
-  const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set());
-
-  const toggleCard = (id: number) => {
-    setSelectedIds((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      return next;
-    });
-  };
-
-  const toggleAll = () => {
-    if (selectedIds.size === cards.length) {
-      setSelectedIds(new Set());
-    } else {
-      setSelectedIds(new Set(cards.map((c) => c.id)));
-    }
-  };
+  const { selectedIds, selectedIdsArray, toggleCard, toggleAll } = useSelection(cards);
 
   const handlePlay = () => {
     if (selectedIds.size === 0) return;
-    const ids = Array.from(selectedIds).join(",");
-    router.push(`/play?ids=${ids}`);
+    router.push(`/play?ids=${selectedIdsArray.join(",")}`);
   };
 
   if (loading) {
