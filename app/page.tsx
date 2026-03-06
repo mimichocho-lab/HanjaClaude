@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useHanjaData } from "@/hooks/useHanjaData";
 import { useSelection } from "@/hooks/useSelection";
+import { usePlayOptions } from "@/hooks/usePlayOptions";
 import HanjaCardCell from "@/components/HanjaCard";
 import BottomBar from "@/components/BottomBar";
 
@@ -10,6 +11,7 @@ export default function HomePage() {
   const router = useRouter();
   const { cards, loading } = useHanjaData();
   const { selectedIds, selectedIdsArray, toggleCard, toggleAll } = useSelection(cards);
+  const { options } = usePlayOptions();
 
   const handlePlay = () => {
     if (selectedIds.size === 0) return;
@@ -28,7 +30,7 @@ export default function HomePage() {
     <div className="pb-24">
       {/* 상단 바 */}
       <div className="sticky top-0 bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between z-10">
-        <h1 className="text-lg font-bold text-gray-800">한자클로드</h1>
+        <h1 className="text-lg font-bold text-gray-800">구몬 한자 B</h1>
         <div className="flex gap-2">
           <button
             className="text-sm px-3 py-1.5 rounded-lg border border-gray-300 text-gray-600 active:bg-gray-100"
@@ -38,7 +40,7 @@ export default function HomePage() {
           </button>
           <button
             className="text-sm px-3 py-1.5 rounded-lg border border-gray-300 text-gray-600 active:bg-gray-100"
-            onClick={() => router.push("/options")}
+            onClick={() => router.push(`/options?ids=${selectedIdsArray.join(",")}`)}
           >
             설정
           </button>
@@ -53,6 +55,7 @@ export default function HomePage() {
             card={card}
             selected={selectedIds.has(card.id)}
             onTap={() => toggleCard(card.id)}
+            showMeaning={options.showMeaning}
           />
         ))}
       </div>

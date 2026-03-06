@@ -9,6 +9,7 @@ interface Props {
   onLongPress?: () => void;
   deleteMode?: boolean;
   onDelete?: () => void;
+  showMeaning?: boolean;
 }
 
 export default function HanjaCardCell({
@@ -18,6 +19,7 @@ export default function HanjaCardCell({
   onLongPress,
   deleteMode = false,
   onDelete,
+  showMeaning = true,
 }: Props) {
   let pressTimer: ReturnType<typeof setTimeout> | null = null;
 
@@ -49,9 +51,11 @@ export default function HanjaCardCell({
       <span className="text-3xl font-bold text-gray-800">{card.hanja}</span>
 
       {/* 뜻음 */}
-      <span className="text-[11px] text-gray-500 mt-0.5">
-        {card.meaning} {card.pronunciation}
-      </span>
+      {showMeaning && (
+        <span className="text-[11px] text-gray-500 mt-0.5">
+          {card.meaning} {card.pronunciation}
+        </span>
+      )}
 
       {/* 삭제 모드 X 버튼 */}
       {deleteMode && (

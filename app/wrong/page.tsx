@@ -4,12 +4,14 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useHanjaData } from "@/hooks/useHanjaData";
 import { useWrongAnswers } from "@/hooks/useWrongAnswers";
+import { usePlayOptions } from "@/hooks/usePlayOptions";
 import HanjaCardCell from "@/components/HanjaCard";
 
 export default function WrongPage() {
   const router = useRouter();
   const { cards: allCards, loading } = useHanjaData();
   const { wrongIds, removeWrongId } = useWrongAnswers();
+  const { options } = usePlayOptions();
   const [deleteMode, setDeleteMode] = useState(false);
 
   const wrongCards = allCards.filter((c) => wrongIds.includes(c.id));
@@ -80,6 +82,7 @@ export default function WrongPage() {
               deleteMode={deleteMode}
               onDelete={() => removeWrongId(card.id)}
               onLongPress={() => setDeleteMode(true)}
+              showMeaning={options.showMeaning}
             />
           ))}
         </div>

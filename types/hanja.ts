@@ -11,4 +11,5 @@ export type CardFace = "front" | "back";
 export interface PlayOptions {
   order: "sequential" | "random";
   startFace: "front" | "back" | "random";
+  showMeaning: boolean;
 }
