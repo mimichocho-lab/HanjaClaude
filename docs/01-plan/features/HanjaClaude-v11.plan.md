@@ -6,7 +6,7 @@
 |------|------|
 | Feature | HanjaClaude-v11 |
 | 기반 | HanjaClaude v10 (Match Rate 100%) |
-| 목표 | Play 화면 카드 UI 개선 |
+| 목표 | Play 화면 카드 UI 개선 + Options 화면 셋 선택 UI 개선 |
 | 작성일 | 2026-03-07 |
 
 ---
@@ -45,13 +45,20 @@ Play 화면의 FlipCard 컴포넌트에 다음 UI 문제가 있다.
 - 우측 상단 번호 영역을 카드 폭의 10%로 변경
 - `right-4` 고정값 대신 `w-[10%]` 기반 배치 적용
 
+### F-v11-05: 옵션 화면 셋 선택 버튼 3열 그리드
+
+- 현재: `flex flex-col gap-2` (세로 나열, 1열)
+- 변경: `grid grid-cols-3 gap-2` (3열 그리드)
+- `app/options/page.tsx` 수정 대상
+
 ---
 
 ## 변경 파일
 
 | 파일 | 변경 유형 |
 |------|-----------|
-| `components/FlipCard.tsx` | 수정 (전체 4개 항목) |
+| `components/FlipCard.tsx` | 수정 (F-v11-01 ~ F-v11-04) |
+| `app/options/page.tsx` | 수정 (F-v11-05) |
 
 ---
 
@@ -64,6 +71,7 @@ Play 화면의 FlipCard 컴포넌트에 다음 UI 문제가 있다.
 | '탭해서 확인' 텍스트 없음 | 코드 확인 |
 | '탭해서 한자 보기' 텍스트 없음 | 코드 확인 |
 | 번호가 카드 폭의 10% 영역에 표시됨 | 시각 확인 |
+| 셋 선택 버튼이 한 줄에 3개씩 표시됨 | 시각 확인 |
 
 ---
 
