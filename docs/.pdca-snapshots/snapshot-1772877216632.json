@@ -1,0 +1,620 @@
+{
+  "timestamp": "2026-03-07T09:53:36.632Z",
+  "reason": "compaction",
+  "status": {
+    "version": "2.0",
+    "lastUpdated": "2026-03-07T09:49:01.856Z",
+    "activeFeatures": [
+      "HanjaClaude",
+      "hanjaclaude",
+      "options",
+      "play",
+      "wrong",
+      "public"
+    ],
+    "primaryFeature": "HanjaClaude",
+    "features": {
+      "HanjaClaude": {
+        "phase": "archived",
+        "matchRate": 98,
+        "iterationCount": 0,
+        "startedAt": "2026-03-06T16:07:08.621Z",
+        "archivedAt": "2026-03-07T00:00:00.000Z",
+        "archivedTo": "docs/archive/2026-03/HanjaClaude-v5/"
+      },
+      "hanjaclaude": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-03-06T00:24:08.517Z",
+          "lastUpdated": "2026-03-07T09:49:01.856Z"
+        },
+        "lastFile": "/home/hapines/claudeprojects/hanjaclaude/app/page.tsx"
+      },
+      "options": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-03-06T00:25:55.267Z",
+          "lastUpdated": "2026-03-07T00:30:38.253Z"
+        },
+        "lastFile": "/home/hapines/claudeprojects/hanjaclaude/app/options/page.tsx"
+      },
+      "play": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-03-06T00:26:19.612Z",
+          "lastUpdated": "2026-03-07T09:35:59.694Z"
+        },
+        "lastFile": "/home/hapines/claudeprojects/hanjaclaude/app/play/page.tsx"
+      },
+      "wrong": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-03-06T00:26:31.535Z",
+          "lastUpdated": "2026-03-07T09:36:08.363Z"
+        },
+        "lastFile": "/home/hapines/claudeprojects/hanjaclaude/app/wrong/page.tsx"
+      },
+      "public": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-03-06T00:35:18.003Z",
+          "lastUpdated": "2026-03-06T00:35:18.003Z"
+        },
+        "lastFile": "/home/hapines/claudeprojects/hanjaclaude/public/sw.js"
+      }
+    },
+    "pipeline": {
+      "currentPhase": 1,
+      "level": "Starter",
+      "phaseHistory": []
+    },
+    "session": {
+      "startedAt": "2026-03-05T02:47:39.391Z",
+      "onboardingCompleted": false,
+      "lastActivity": "2026-03-07T09:49:01.856Z"
+    },
+    "history": [
+      {
+        "timestamp": "2026-03-06T00:24:08.517Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T00:24:12.775Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T00:24:33.796Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T00:24:38.198Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T00:24:41.922Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T00:24:49.304Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T00:24:54.708Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T00:25:03.924Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T00:25:14.005Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T00:25:21.509Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T00:25:33.779Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T00:25:44.139Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T00:25:55.267Z",
+        "feature": "options",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T00:26:19.612Z",
+        "feature": "play",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T00:26:31.535Z",
+        "feature": "wrong",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T00:27:15.676Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T00:35:06.143Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T00:35:11.935Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T00:35:18.003Z",
+        "feature": "public",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T00:35:23.020Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T00:35:30.272Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T00:35:34.140Z",
+        "feature": "play",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T00:35:38.105Z",
+        "feature": "play",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T00:35:44.450Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T00:35:55.296Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T00:36:06.874Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T00:36:26.932Z",
+        "feature": "play",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T01:10:45.296Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T01:10:48.072Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T01:10:53.212Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T01:10:56.890Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T01:11:00.826Z",
+        "feature": "play",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T01:11:03.680Z",
+        "feature": "play",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T01:28:40.833Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T01:58:44.406Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T01:58:49.831Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T01:58:53.676Z",
+        "feature": "play",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T01:58:58.812Z",
+        "feature": "play",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T01:59:08.422Z",
+        "feature": "play",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T01:59:14.436Z",
+        "feature": "play",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T03:05:14.655Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T15:27:41.509Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T15:27:45.123Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T15:27:52.709Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T15:27:57.140Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T15:28:03.210Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T15:28:09.525Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T15:28:12.818Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T15:28:18.615Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T15:28:22.102Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T15:28:25.635Z",
+        "feature": "wrong",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T15:28:29.155Z",
+        "feature": "wrong",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T15:28:33.418Z",
+        "feature": "wrong",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T15:29:07.226Z",
+        "feature": "options",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T16:07:29.507Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T16:07:35.621Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T16:07:46.251Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T16:07:51.749Z",
+        "feature": "options",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T16:08:03.973Z",
+        "feature": "options",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T16:17:03.259Z",
+        "feature": "options",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-06T16:21:28.950Z",
+        "feature": "options",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-07T00:30:03.434Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-07T00:30:07.675Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-07T00:30:11.295Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-07T00:30:15.876Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-07T00:30:20.707Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-07T00:30:29.535Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-07T00:30:38.253Z",
+        "feature": "options",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-07T00:30:42.464Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-07T00:30:48.395Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-07T00:30:52.809Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-07T00:32:01.519Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-07T09:34:08.849Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-07T09:34:16.202Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-07T09:34:22.652Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-07T09:34:27.662Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-07T09:34:31.286Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-07T09:34:58.923Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-07T09:35:49.049Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-07T09:35:56.851Z",
+        "feature": "play",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-07T09:35:59.694Z",
+        "feature": "play",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-07T09:36:02.201Z",
+        "feature": "wrong",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-07T09:36:08.363Z",
+        "feature": "wrong",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-07T09:48:54.874Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-07T09:48:57.814Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-07T09:49:01.856Z",
+        "feature": "hanjaclaude",
+        "phase": "do",
+        "action": "updated"
+      }
+    ]
+  }
+}
