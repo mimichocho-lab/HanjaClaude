@@ -22,7 +22,7 @@ function HomeContent() {
       .catch((err) => console.error("데이터셋 목록 로드 실패:", err));
   }, []);
 
-  const { selectedDataset, changeDataset } = useDataset(datasets);
+  const { selectedDataset, setDataset } = useDataset(datasets);
   const { cards, loading } = useHanjaData(selectedDataset?.file ?? "hanjab.csv");
 
   const idsParam = searchParams.get("ids");
@@ -36,7 +36,7 @@ function HomeContent() {
   const [showPopup, setShowPopup] = useState(false);
 
   const handleDatasetChange = (dataset: Dataset) => {
-    changeDataset(dataset);
+    setDataset(dataset);
     clearSelection();
     setShowPopup(false);
   };

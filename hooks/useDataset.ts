@@ -36,10 +36,10 @@ export function useDataset(datasets: Dataset[]) {
     setSelectedDataset(datasets[0]);
   }, [datasets]);
 
-  const changeDataset = (dataset: Dataset) => {
+  const setDataset = (dataset: Dataset) => {
     setSelectedDataset(dataset);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(dataset));
   };
 
-  return { selectedDataset, changeDataset };
+  return { selectedDataset, setDataset };
 }
