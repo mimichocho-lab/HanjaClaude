@@ -37,8 +37,6 @@ function PlayContent() {
     setDone,
     goToCard,
     flipCard,
-    onTouchStart,
-    onTouchEnd,
   } = usePlaySession(filteredCards, options);
 
   const currentCard = playCards[currentIndex];
@@ -108,11 +106,7 @@ function PlayContent() {
       <ProgressBar current={currentIndex + 1} total={playCards.length} />
 
       {/* 카드 영역 */}
-      <div
-        className="flex-1 flex flex-col items-center justify-center px-6 py-8"
-        onTouchStart={(e) => onTouchStart(e.touches[0].clientX)}
-        onTouchEnd={(e) => onTouchEnd(e.changedTouches[0].clientX)}
-      >
+      <div className="flex-1 flex flex-col items-center justify-center px-6 py-8">
         <FlipCard card={currentCard} face={face} onFlip={flipCard} animated={animated} />
       </div>
 

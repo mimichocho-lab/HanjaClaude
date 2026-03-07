@@ -3,8 +3,6 @@
 import { useState, useRef, useEffect } from "react";
 import type { CardFace, HanjaCard, PlayOptions } from "@/types/hanja";
 
-const SWIPE_THRESHOLD = 50;
-
 export function usePlaySession(cards: HanjaCard[], options: PlayOptions) {
   const [playCards, setPlayCards] = useState<HanjaCard[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -12,7 +10,6 @@ export function usePlaySession(cards: HanjaCard[], options: PlayOptions) {
   const [done, setDone] = useState(false);
   const [animated, setAnimated] = useState(false);
 
-  const touchStartX = useRef(0);
   const optionsRef = useRef(options);
   useEffect(() => { optionsRef.current = options; }, [options]);
 
@@ -44,33 +41,9 @@ export function usePlaySession(cards: HanjaCard[], options: PlayOptions) {
     setAnimated(false);
   };
 
-  // 스와이프 이동: 현재 면 유지 (F-13)
-  const swipeToCard = (index: number) => {
-    setCurrentIndex(index);
-    setAnimated(false);
-  };
-
   const flipCard = () => {
     setAnimated(true);
     setFace((f) => (f === "front" ? "back" : "front"));
-  };
-
-  const handleSwipe = (deltaX: number) => {
-    if (Math.abs(deltaX) < SWIPE_THRESHOLD) return;
-    if (deltaX > 0) {
-      if (currentIndex > 0) swipeToCard(currentIndex - 1);
-    } else {
-      if (currentIndex < playCards.length - 1) swipeToCard(currentIndex + 1);
-      else setDone(true);
-    }
-  };
-
-  const onTouchStart = (clientX: number) => {
-    touchStartX.current = clientX;
-  };
-
-  const onTouchEnd = (clientX: number) => {
-    handleSwipe(touchStartX.current - clientX);
   };
 
   return {
@@ -82,7 +55,5 @@ export function usePlaySession(cards: HanjaCard[], options: PlayOptions) {
     setDone,
     goToCard,
     flipCard,
-    onTouchStart,
-    onTouchEnd,
   };
 }

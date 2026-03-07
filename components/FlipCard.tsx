@@ -21,7 +21,7 @@ export default function FlipCard({ card, face, onFlip, animated = true }: Props)
 
   return (
     <div
-      className="w-full max-w-xs mx-auto cursor-pointer"
+      className="w-[90vw] mx-auto cursor-pointer"
       style={{ perspective: 1000 }}
       onClick={onFlip}
     >
@@ -36,11 +36,10 @@ export default function FlipCard({ card, face, onFlip, animated = true }: Props)
           className="absolute inset-0 flex flex-col items-center justify-center bg-white rounded-2xl shadow-lg border border-gray-100"
           style={{ backfaceVisibility: "hidden" }}
         >
-          <span className="absolute top-3 right-4 text-sm text-gray-400">
+          <span className="absolute top-3 right-0 w-[10%] text-center text-xs text-gray-400">
             {card.id}
           </span>
           <span className="text-8xl font-bold text-gray-800">{card.hanja}</span>
-          <span className="mt-4 text-gray-400 text-sm">탭해서 확인</span>
         </div>
 
         {/* 뒷면: 이미지 + 뜻음 */}
@@ -51,7 +50,7 @@ export default function FlipCard({ card, face, onFlip, animated = true }: Props)
             transform: "rotateY(180deg)",
           }}
         >
-          <span className="absolute top-3 right-4 text-sm text-gray-400">
+          <span className="absolute top-3 right-0 w-[10%] text-center text-xs text-gray-400">
             {card.id}
           </span>
           {card.imagePath && !imageError && (
@@ -62,9 +61,9 @@ export default function FlipCard({ card, face, onFlip, animated = true }: Props)
               onError={() => setImageError(true)}
             />
           )}
-          <p className="text-5xl font-bold text-amber-700">{card.meaning}</p>
-          <p className="text-2xl text-amber-500 mt-2">{card.pronunciation}</p>
-          <span className="mt-4 text-gray-400 text-sm">탭해서 한자 보기</span>
+          <p className="text-3xl font-bold text-amber-700">
+            {card.meaning} {card.pronunciation}
+          </p>
         </div>
       </motion.div>
     </div>
