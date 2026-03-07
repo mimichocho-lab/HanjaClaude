@@ -5,7 +5,7 @@
     "platform": "claude",
     "level": "Dynamic"
   },
-  "currentFeature": "HanjaClaude-v7",
-  "phase": "archived",
+  "currentFeature": "HanjaClaude-v8",
+  "phase": "plan",
   "matchRate": 100
 }
