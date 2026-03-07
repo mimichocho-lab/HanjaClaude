@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import type { HanjaCard, CardFace } from "@/types/hanja";
 
@@ -12,6 +13,11 @@ interface Props {
 
 export default function FlipCard({ card, face, onFlip, animated = true }: Props) {
   const isFlipped = face === "back";
+  const [imageError, setImageError] = useState(false);
+
+  useEffect(() => {
+    setImageError(false);
+  }, [card.id]);
 
   return (
     <div
@@ -37,7 +43,7 @@ export default function FlipCard({ card, face, onFlip, animated = true }: Props)
           <span className="mt-4 text-gray-400 text-sm">탭해서 확인</span>
         </div>
 
-        {/* 뒷면: 뜻음 */}
+        {/* 뒷면: 이미지 + 뜻음 */}
         <div
           className="absolute inset-0 flex flex-col items-center justify-center bg-amber-50 rounded-2xl shadow-lg border border-amber-100"
           style={{
@@ -48,6 +54,14 @@ export default function FlipCard({ card, face, onFlip, animated = true }: Props)
           <span className="absolute top-3 right-4 text-sm text-gray-400">
             {card.id}
           </span>
+          {card.imagePath && !imageError && (
+            <img
+              src={card.imagePath}
+              alt={card.meaning}
+              className="w-3/5 max-h-[45%] object-contain mb-2"
+              onError={() => setImageError(true)}
+            />
+          )}
           <p className="text-5xl font-bold text-amber-700">{card.meaning}</p>
           <p className="text-2xl text-amber-500 mt-2">{card.pronunciation}</p>
           <span className="mt-4 text-gray-400 text-sm">탭해서 한자 보기</span>

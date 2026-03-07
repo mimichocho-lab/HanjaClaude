@@ -12,4 +12,5 @@ export interface PlayOptions {
   order: "sequential" | "random";
   startFace: "front" | "back" | "random";
   showMeaning: boolean;
+  homeOrder: "sequential" | "random";
 }

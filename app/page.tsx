@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useMemo } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useHanjaData } from "@/hooks/useHanjaData";
 import { useSelection } from "@/hooks/useSelection";
@@ -20,6 +20,16 @@ function HomeContent() {
 
   const { selectedIds, selectedIdsArray, toggleCard, toggleAll } = useSelection(cards, initialIds);
   const { options } = usePlayOptions();
+
+  const displayCards = useMemo(() => {
+    if (options.homeOrder !== "random") return cards;
+    const shuffled = [...cards];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  }, [cards, options.homeOrder]);
 
   const handlePlay = () => {
     if (selectedIds.size === 0) return;
@@ -57,7 +67,7 @@ function HomeContent() {
 
       {/* 한자 그리드 */}
       <div className="grid grid-cols-5 gap-2 p-3">
-        {cards.map((card) => (
+        {displayCards.map((card) => (
           <HanjaCardCell
             key={card.id}
             card={card}

@@ -1,6 +1,7 @@
 {
   "HanjaClaude-v6": {
-    "phase": "plan",
+    "phase": "check",
+    "matchRate": 97,
     "matchRate": 0,
     "iterationCount": 0,
     "startedAt": "2026-03-07T00:00:00.000Z",

@@ -15,7 +15,7 @@ export async function loadHanjaData(): Promise<HanjaCard[]> {
         hanja: hanja.trim(),
         meaning: meaning.trim(),
         pronunciation: pronunciation.trim(),
-        imagePath: `/images/hanja/${id}.png`,
+        imagePath: `${basePath}/images/hanja/${id.trim()}.png`,
       };
     });
 }

@@ -78,6 +78,29 @@ function OptionsContent() {
           </div>
         </div>
 
+        {/* 홈 화면 카드 순서 (F-v6-03) */}
+        <div className="bg-white rounded-xl p-4 shadow-sm">
+          <p className="text-sm font-semibold text-gray-700 mb-3">홈 화면 카드 순서</p>
+          <div className="flex gap-3">
+            {[
+              { value: "sequential", label: "번호 순서" },
+              { value: "random", label: "랜덤" },
+            ].map((opt) => (
+              <button
+                key={opt.value}
+                className={`flex-1 py-2.5 rounded-lg text-sm font-medium border transition-colors
+                  ${options.homeOrder === opt.value
+                    ? "bg-blue-500 text-white border-blue-500"
+                    : "bg-white text-gray-600 border-gray-300"
+                  }`}
+                onClick={() => updateOptions({ homeOrder: opt.value as "sequential" | "random" })}
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* 뜻음 표시 (F-08) */}
         <div className="bg-white rounded-xl p-4 shadow-sm">
           <p className="text-sm font-semibold text-gray-700 mb-3">홈/오답방 뜻음 표시</p>

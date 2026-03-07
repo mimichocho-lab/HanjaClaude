@@ -4,14 +4,14 @@ import { useState, useEffect } from "react";
 import type { PlayOptions } from "@/types/hanja";
 
 const KEY = "hanjaPlayOptions";
-const DEFAULT: PlayOptions = { order: "sequential", startFace: "front", showMeaning: true };
+const DEFAULT: PlayOptions = { order: "sequential", startFace: "front", showMeaning: true, homeOrder: "sequential" };
 
 export function usePlayOptions() {
   const [options, setOptions] = useState<PlayOptions>(DEFAULT);
 
   useEffect(() => {
     const stored = localStorage.getItem(KEY);
-    if (stored) setOptions(JSON.parse(stored));
+    if (stored) setOptions({ ...DEFAULT, ...JSON.parse(stored) });
   }, []);
 
   const updateOptions = (next: Partial<PlayOptions>) => {
