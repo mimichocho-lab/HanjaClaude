@@ -21,15 +21,15 @@ export default function FlipCard({ card, face, onFlip, animated = true }: Props)
 
   return (
     <div
-      className="w-[90vw] mx-auto cursor-pointer"
-      style={{ perspective: 1000 }}
+      className="mx-auto cursor-pointer"
+      style={{ perspective: 1000, width: 'min(90vw, 80vh)', height: 'min(90vw, 80vh)' }}
       onClick={onFlip}
     >
       <motion.div
         animate={{ rotateY: isFlipped ? 180 : 0 }}
         transition={animated ? { duration: 0.4, ease: "easeInOut" } : { duration: 0 }}
         style={{ transformStyle: "preserve-3d", position: "relative" }}
-        className="w-full aspect-[3/4]"
+        className="w-full h-full"
       >
         {/* 앞면: 한자 */}
         <div
@@ -39,7 +39,12 @@ export default function FlipCard({ card, face, onFlip, animated = true }: Props)
           <span className="absolute top-3 right-0 w-[10%] text-center text-xs text-gray-400">
             {card.id}
           </span>
-          <span className="text-8xl font-bold text-gray-800">{card.hanja}</span>
+          <span
+            className="font-bold text-gray-800"
+            style={{ fontSize: 'calc(0.8 * min(90vw, 80vh))' }}
+          >
+            {card.hanja}
+          </span>
         </div>
 
         {/* 뒷면: 이미지 + 뜻음 */}
@@ -57,11 +62,11 @@ export default function FlipCard({ card, face, onFlip, animated = true }: Props)
             <img
               src={card.imagePath}
               alt={card.meaning}
-              className="w-3/5 max-h-[45%] object-contain mb-2"
+              className="w-3/5 max-h-[45%] object-contain"
               onError={() => setImageError(true)}
             />
           )}
-          <p className="text-3xl font-bold text-amber-700">
+          <p className="absolute bottom-[8%] max-w-[80%] max-h-[30%] overflow-hidden text-3xl font-bold text-amber-700 text-center">
             {card.meaning} {card.pronunciation}
           </p>
         </div>
