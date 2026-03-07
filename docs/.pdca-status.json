@@ -35,6 +35,14 @@
       "archivedAt": "2026-03-07T11:30:00.000Z",
       "archivedTo": "docs/archive/2026-03/HanjaClaude-v11/"
     },
+    "HanjaClaude-v12": {
+      "phase": "archived",
+      "matchRate": 100,
+      "iterationCount": 0,
+      "startedAt": "2026-03-07T13:55:22.139Z",
+      "archivedAt": "2026-03-07T14:30:00.000Z",
+      "archivedTo": "docs/archive/2026-03/HanjaClaude-v12/"
+    },
     "hanjaclaude": {
       "phase": "do",
       "phaseNumber": 3,
