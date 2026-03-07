@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import type { HanjaCard, CardFace } from "@/types/hanja";
 
@@ -14,9 +14,21 @@ interface Props {
 export default function FlipCard({ card, face, onFlip, animated = true }: Props) {
   const isFlipped = face === "back";
   const [imageError, setImageError] = useState(false);
+  const meaningRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
     setImageError(false);
+  }, [card.id]);
+
+  useEffect(() => {
+    const el = meaningRef.current;
+    if (!el) return;
+    let size = 0.3;
+    el.style.fontSize = `calc(${size} * min(90vw, 80vh))`;
+    while (el.scrollWidth > el.clientWidth && size > 0.05) {
+      size = Math.round((size - 0.01) * 100) / 100;
+      el.style.fontSize = `calc(${size} * min(90vw, 80vh))`;
+    }
   }, [card.id]);
 
   return (
@@ -67,8 +79,9 @@ export default function FlipCard({ card, face, onFlip, animated = true }: Props)
             />
           )}
           <p
-            className="absolute bottom-[8%] max-w-[80%] max-h-[30%] overflow-hidden font-bold text-amber-700 text-center"
-            style={{ fontSize: 'calc(0.3 * min(90vw, 80vh))' }}
+            ref={meaningRef}
+            className="absolute bottom-[30%] max-w-[80%] font-bold text-amber-700 text-center"
+            style={{ fontSize: 'calc(0.3 * min(90vw, 80vh))', whiteSpace: 'nowrap' }}
           >
             {card.meaning} {card.pronunciation}
           </p>

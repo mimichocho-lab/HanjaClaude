@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-03-07T14:19:18.236Z",
+  "lastUpdated": "2026-03-07T14:30:09.579Z",
   "activeFeatures": [
     "HanjaClaude",
     "hanjaclaude",
@@ -51,6 +51,14 @@
       "archivedAt": "2026-03-07T14:50:00.000Z",
       "archivedTo": "docs/archive/2026-03/HanjaClaude-v13/"
     },
+    "HanjaClaude-v14": {
+      "phase": "archived",
+      "matchRate": 100,
+      "iterationCount": 0,
+      "startedAt": "2026-03-07T14:55:00.000Z",
+      "archivedAt": "2026-03-07T15:20:00.000Z",
+      "archivedTo": "docs/archive/2026-03/HanjaClaude-v14/"
+    },
     "hanjaclaude": {
       "phase": "do",
       "phaseNumber": 3,
@@ -60,7 +68,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-06T00:24:08.517Z",
-        "lastUpdated": "2026-03-07T14:19:18.236Z"
+        "lastUpdated": "2026-03-07T14:30:09.579Z"
       },
       "lastFile": "/home/hapines/claudeprojects/hanjaclaude/components/FlipCard.tsx"
     },
@@ -125,7 +133,7 @@
   "session": {
     "startedAt": "2026-03-05T02:47:39.391Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-03-07T14:19:18.236Z"
+    "lastActivity": "2026-03-07T14:30:09.579Z"
   },
   "history": [
     {
@@ -814,6 +822,12 @@
     },
     {
       "timestamp": "2026-03-07T14:19:18.236Z",
+      "feature": "hanjaclaude",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-07T14:30:09.579Z",
       "feature": "hanjaclaude",
       "phase": "do",
       "action": "updated"
