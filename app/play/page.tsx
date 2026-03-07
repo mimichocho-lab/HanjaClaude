@@ -3,6 +3,7 @@
 import { useEffect, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useHanjaData } from "@/hooks/useHanjaData";
+import { getStoredDatasetFile } from "@/hooks/useDataset";
 import { useWrongAnswers } from "@/hooks/useWrongAnswers";
 import { usePlayOptions } from "@/hooks/usePlayOptions";
 import { usePlaySession } from "@/hooks/usePlaySession";
@@ -13,7 +14,8 @@ import type { HanjaCard } from "@/types/hanja";
 function PlayContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { cards: allCards, loading } = useHanjaData();
+  const [datasetFile] = useState(() => getStoredDatasetFile());
+  const { cards: allCards, loading } = useHanjaData(datasetFile);
   const { wrongIds, addWrongId, removeWrongId } = useWrongAnswers();
   const { options } = usePlayOptions();
   const [filteredCards, setFilteredCards] = useState<HanjaCard[]>([]);

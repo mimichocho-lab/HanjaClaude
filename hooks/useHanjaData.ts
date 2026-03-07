@@ -4,12 +4,14 @@ import { useState, useEffect } from "react";
 import { loadHanjaData } from "@/lib/parseHanja";
 import type { HanjaCard } from "@/types/hanja";
 
-export function useHanjaData() {
+export function useHanjaData(file: string) {
   const [cards, setCards] = useState<HanjaCard[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    loadHanjaData()
+    setLoading(true);
+    setCards([]);
+    loadHanjaData(file)
       .then((data) => {
         setCards(data);
       })
@@ -19,7 +21,7 @@ export function useHanjaData() {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [file]);
 
   return { cards, loading };
 }

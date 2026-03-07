@@ -47,7 +47,12 @@ export function useSelection(cards: HanjaCard[], initialIds?: number[]) {
     });
   };
 
+  const clearSelection = () => {
+    setSelectedIds(new Set());
+    localStorage.removeItem(KEY);
+  };
+
   const selectedIdsArray = Array.from(selectedIds);
 
-  return { selectedIds, selectedIdsArray, toggleCard, toggleAll };
+  return { selectedIds, selectedIdsArray, toggleCard, toggleAll, clearSelection };
 }

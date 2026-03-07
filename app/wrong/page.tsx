@@ -3,13 +3,14 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useHanjaData } from "@/hooks/useHanjaData";
+import { getStoredDatasetFile } from "@/hooks/useDataset";
 import { useWrongAnswers } from "@/hooks/useWrongAnswers";
 import { usePlayOptions } from "@/hooks/usePlayOptions";
 import HanjaCardCell from "@/components/HanjaCard";
 
 export default function WrongPage() {
   const router = useRouter();
-  const { cards: allCards, loading } = useHanjaData();
+  const { cards: allCards, loading } = useHanjaData(getStoredDatasetFile());
   const { wrongIds, removeWrongId } = useWrongAnswers();
   const { options } = usePlayOptions();
   const [deleteMode, setDeleteMode] = useState(false);

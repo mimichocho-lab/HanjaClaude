@@ -1,3 +1,9 @@
+export interface Dataset {
+  id: number;
+  name: string;
+  file: string;
+}
+
 export interface HanjaCard {
   id: number;
   hanja: string;
