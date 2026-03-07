@@ -1,7 +1,8 @@
 {
   "HanjaClaude-v6": {
-    "phase": "completed",
+    "phase": "archived",
     "matchRate": 97,
+    "archivedTo": "docs/archive/2026-03/HanjaClaude-v6/",
     "matchRate": 0,
     "iterationCount": 0,
     "startedAt": "2026-03-07T00:00:00.000Z",
