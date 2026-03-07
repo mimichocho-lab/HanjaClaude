@@ -4,6 +4,7 @@
 
 HanjaClaude v5 기반에서 카드 뒷면 이미지 표시 기능을 추가한다.
 `FlipCard` 컴포넌트의 뒷면에 이미지를 보여주되, 이미지가 없을 때는 현재 텍스트 레이아웃으로 fallback한다.
+옵션에 '홈 화면 카드 랜덤'을 추가한다. 랜덤을 선택하면 1번부터 90번까지의 한자를 랜덤하게 배열해서 유저에게 보여준다.
 
 ---
 
@@ -22,6 +23,7 @@ v5까지 카드 뒷면은 뜻과 음 텍스트만 표시된다. 구몬 교재에
 - 카드 뒷면에 이미지 표시 (이미지 존재 시)
 - 이미지 없을 때 텍스트만 표시 (fallback, 현재 동작 유지)
 - `imagePath` 경로에 `basePath` 적용 (GitHub Pages 호환)
+- 옵션에 '홈 화면 카드 랜덤'을 추가하고 홈 화면에서 카드를 보여주는 기능을 추가한다.
 
 ---
 
@@ -31,8 +33,12 @@ v5까지 카드 뒷면은 뜻과 음 텍스트만 표시된다. 구몬 교재에
 
 | 파일 | 변경 내용 |
 |------|-----------|
+| `types/hanja.ts` | `PlayOptions`에 `homeOrder` 필드 추가 |
+| `hooks/usePlayOptions.ts` | `homeOrder` 기본값 추가 |
 | `lib/parseHanja.ts` | `imagePath`에 `basePath` 포함 |
 | `components/FlipCard.tsx` | 뒷면에 이미지 표시 + 이미지 에러 시 fallback |
+| `app/options/page.tsx` | '홈 화면 카드 순서' 토글 UI 추가 |
+| `app/page.tsx` | `homeOrder === "random"` 시 카드 목록 셔플 적용 |
 
 ### 기능 명세
 
@@ -49,11 +55,21 @@ v5까지 카드 뒷면은 뜻과 음 텍스트만 표시된다. 구몬 교재에
 - 로컬 환경: `basePath = ""` → `/images/hanja/1.png`
 - GitHub Pages: `basePath = "/HanjaClaude"` → `/HanjaClaude/images/hanja/1.png`
 
+#### F-v6-03: 홈 화면 카드 랜덤
+
+- `PlayOptions`에 `homeOrder: "sequential" | "random"` 추가
+- 기본값: `"sequential"` (1~90 번호 순)
+- 옵션 화면에 '홈 화면 카드 순서' 섹션 추가 (번호 순서 / 랜덤 토글)
+- `homeOrder === "random"` 시 홈 화면 로드 시점에 카드 배열을 셔플하여 표시
+- 셔플 순서는 홈 화면 마운트 시 1회 결정 (재렌더링마다 재셔플 안 함)
+- localStorage에 옵션 저장 (기존 `usePlayOptions` 패턴 그대로)
+
 ### Out of Scope
 
 - 이미지 파일 제작 또는 추가 (별도 작업)
 - 홈/오답방 카드 썸네일에 이미지 추가
 - 이미지 로딩 스켈레톤 UI
+- 홈 화면 랜덤 순서의 URL 파라미터 반영
 
 ---
 
@@ -63,6 +79,10 @@ v5까지 카드 뒷면은 뜻과 음 텍스트만 표시된다. 구몬 교재에
 - [ ] 이미지 파일이 없을 때 텍스트만 표시 (현재 동작과 동일)
 - [ ] GitHub Pages에서 이미지 경로가 올바르게 생성됨 (`/HanjaClaude/images/hanja/1.png`)
 - [ ] 로컬에서 이미지 경로가 올바름 (`/images/hanja/1.png`)
+- [ ] 옵션 화면에 '홈 화면 카드 순서' 토글이 표시됨 (번호 순서 / 랜덤)
+- [ ] '랜덤' 선택 시 홈 화면 카드가 1~90 무작위 순서로 표시됨
+- [ ] '번호 순서' 선택 시 홈 화면 카드가 1~90 순서대로 표시됨
+- [ ] 옵션이 localStorage에 저장되어 재방문 시 유지됨
 - [ ] 기존 기능(플레이, 플립, 스와이프) 모두 정상 동작
 
 ---
@@ -72,6 +92,7 @@ v5까지 카드 뒷면은 뜻과 음 텍스트만 표시된다. 구몬 교재에
 - `FlipCard`에서 `useState`로 `imageError` 상태 관리 → `onError` 이벤트 시 fallback
 - 이미지 크기: 뒷면 카드 상단 50~60% 영역, `object-contain`으로 비율 유지
 - `next.config.js`의 `images` 설정은 불필요 (정적 `<img>` 태그 사용, SSG 환경)
+- 홈 화면 셔플: `useMemo` + `useState`로 마운트 시 1회만 셔플 → 재렌더링 시 순서 유지
 
 ---
 
