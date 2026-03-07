@@ -57,6 +57,8 @@ v8에서는 URL에 `set` 파라미터를 추가해 셋을 명시적으로 지정
 - 홈 → 옵션: `/options?ids=...&set={selectedDataset.id}`
 - 옵션 → 홈: `router.push("/")` (변경 없음 — 홈은 URL `set` 또는 localStorage 사용)
 
+### F-v8-04: 홈 화면에서 셋을 선택하면 localStorage에 바뀐 셋 번호를 저장
+
 ---
 
 ## 변경 파일 목록 (예상)
@@ -82,6 +84,7 @@ v8에서는 URL에 `set` 파라미터를 추가해 셋을 명시적으로 지정
 - [ ] `/?ids=1,2&set=1` URL 접근 시 "5급 신출 한자" 셋으로 홈이 열림
 - [ ] `/?ids=1,2&set=2` URL 접근 시 "구몬 한자 B" 셋으로 홈이 열림
 - [ ] URL의 `set`이 없으면 기존 localStorage 동작 유지
+- [ ] 홈 화면에서 set 변경시 타이틀 및 카드 목록 변경
 - [ ] 유효하지 않은 `set` 값이면 localStorage → datasets[0] fallback
 - [ ] 옵션 페이지 URL 복사 결과에 `&set={id}` 포함
 - [ ] 옵션 페이지 미리보기 텍스트에 `&set={id}` 표시
