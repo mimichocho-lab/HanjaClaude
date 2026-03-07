@@ -39,12 +39,16 @@ v7에서는 **구몬 한자 B**와 **5급 신출 한자**(grade5.csv, 149장)를
 
 ### F-v7-01: 홈 화면 데이터셋 탭 전환
 
-- 홈 화면 상단에 **A탭 / B탭** 형태의 탭 UI 추가
-  - A탭: 5급 신출 한자 (grade5.csv, 149장)
+- 홈 화면 상단에 리스트 팝업 및 선택 UI 추가. 누르면 data.csv에 있는 목록 중에 '이름'을 나열하고 선택하면 해당 셋으로 전환한다.
+  - 현재는 data.csv에 있는 다음 두개만 보여준다.
+  - 5급 신출 한자 (grade5.csv, 149장)
   - B탭: 구몬 한자 B (hanjab.csv, 89장)
-- 탭 전환 시 카드 목록 즉시 변경
+- 전환 시 카드 목록 즉시 변경
 - 선택된 데이터셋을 `localStorage`에 저장 (재방문 시 유지)
-- 탭 전환 시 선택 상태(selectedIds) 초기화
+- 전환 시 선택 상태(selectedIds) 초기화
+
+### F-v7-02: 동적 목록 로드
+- `loadSetData()` — 'data.csv'를 읽고 데이터를 저장한다.
 
 ### F-v7-02: 동적 데이터 로드
 
@@ -69,18 +73,18 @@ v7에서는 **구몬 한자 B**와 **5급 신출 한자**(grade5.csv, 149장)를
 ```typescript
 // types/hanja.ts 추가
 export interface Dataset {
-  id: string;    // "hanjab" | "grade5"
+  id: int;    // 1 | 2
   name: string;  // "구몬 한자 B" | "5급 신출 한자"
   file: string;  // "hanjab.csv" | "grade5.csv"
 }
 
 export const DATASETS: Dataset[] = [
-  { id: "grade5", name: "5급 신출 한자", file: "grade5.csv" },
-  { id: "hanjab", name: "구몬 한자 B",   file: "hanjab.csv" },
+  { id: 1, name: "5급 신출 한자", file: "grade5.csv" },
+  { id: 2, name: "구몬 한자 B",   file: "hanjab.csv" },
 ];
 ```
 
-탭 순서: A탭 = grade5 (5급), B탭 = hanjab (구몬 B)
+탭 순서: id 번호순으로 진행한다.
 
 ---
 
@@ -107,8 +111,9 @@ export const DATASETS: Dataset[] = [
 
 ## 성공 기준
 
-- [ ] 홈 화면에서 A탭 / B탭 전환 가능
-- [ ] 탭 전환 시 카드 목록과 제목이 즉시 변경됨
+- [ ] 홈 화면에서 타이틀을 눌러서 리스트 표시 가능
+- [ ] 리스트 중에 셋을 선택하면 현재 셋으로 설정 기능
+- [ ] 셋 전환 시 카드 목록과 제목이 즉시 변경됨
 - [ ] 선택 상태가 탭 전환 시 초기화됨
 - [ ] 데이터셋 선택이 localStorage에 저장되어 재방문 시 유지됨
 - [ ] 기존 v6 기능 (카드 뒤집기, 오답방, 설정, 랜덤 순서 등) 정상 작동
