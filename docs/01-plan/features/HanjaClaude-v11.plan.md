@@ -6,7 +6,7 @@
 |------|------|
 | Feature | HanjaClaude-v11 |
 | 기반 | HanjaClaude v10 (Match Rate 100%) |
-| 목표 | Play 화면 카드 UI 개선 + Options 화면 셋 선택 UI 개선 |
+| 목표 | Play 화면 카드 UI 개선 + Options 화면 셋 선택 UI 개선 + 스와이프 기능 제거 |
 | 작성일 | 2026-03-07 |
 
 ---
@@ -51,6 +51,11 @@ Play 화면의 FlipCard 컴포넌트에 다음 UI 문제가 있다.
 - 변경: `grid grid-cols-3 gap-2` (3열 그리드)
 - `app/options/page.tsx` 수정 대상
 
+### F-v11-06: 스와이프 기능 제거
+
+- `hooks/usePlaySession.ts`: `SWIPE_THRESHOLD`, `touchStartX`, `swipeToCard`, `handleSwipe`, `onTouchStart`, `onTouchEnd` 삭제
+- `app/play/page.tsx`: `onTouchStart`, `onTouchEnd` 구조 분해 제거, 카드 영역 div의 `onTouchStart`/`onTouchEnd` 핸들러 제거
+
 ---
 
 ## 변경 파일
@@ -59,6 +64,8 @@ Play 화면의 FlipCard 컴포넌트에 다음 UI 문제가 있다.
 |------|-----------|
 | `components/FlipCard.tsx` | 수정 (F-v11-01 ~ F-v11-04) |
 | `app/options/page.tsx` | 수정 (F-v11-05) |
+| `hooks/usePlaySession.ts` | 수정 (F-v11-06) |
+| `app/play/page.tsx` | 수정 (F-v11-06) |
 
 ---
 
@@ -72,6 +79,8 @@ Play 화면의 FlipCard 컴포넌트에 다음 UI 문제가 있다.
 | '탭해서 한자 보기' 텍스트 없음 | 코드 확인 |
 | 번호가 카드 폭의 10% 영역에 표시됨 | 시각 확인 |
 | 셋 선택 버튼이 한 줄에 3개씩 표시됨 | 시각 확인 |
+| 스와이프 이벤트 핸들러 코드 없음 | 코드 확인 |
+| `onTouchStart`/`onTouchEnd` 미노출 | usePlaySession return 확인 |
 
 ---
 
