@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-03-07T10:16:37.974Z",
+  "lastUpdated": "2026-03-07T10:33:14.260Z",
   "activeFeatures": [
     "HanjaClaude",
     "hanjaclaude",
@@ -28,9 +28,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-06T00:24:08.517Z",
-        "lastUpdated": "2026-03-07T10:16:37.974Z"
+        "lastUpdated": "2026-03-07T10:33:14.260Z"
       },
-      "lastFile": "/home/hapines/claudeprojects/hanjaclaude/app/page.tsx"
+      "lastFile": "/home/hapines/claudeprojects/hanjaclaude/lib/parseHanja.ts"
     },
     "options": {
       "phase": "do",
@@ -93,7 +93,7 @@
   "session": {
     "startedAt": "2026-03-05T02:47:39.391Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-03-07T10:16:37.974Z"
+    "lastActivity": "2026-03-07T10:33:14.260Z"
   },
   "history": [
     {
@@ -674,6 +674,18 @@
     },
     {
       "timestamp": "2026-03-07T10:16:37.974Z",
+      "feature": "hanjaclaude",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-07T10:33:10.893Z",
+      "feature": "hanjaclaude",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-07T10:33:14.260Z",
       "feature": "hanjaclaude",
       "phase": "do",
       "action": "updated"
