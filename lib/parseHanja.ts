@@ -16,6 +16,7 @@ export async function loadSetData(): Promise<Dataset[]> {
 
 export async function loadHanjaData(file: string): Promise<HanjaCard[]> {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  const imageFolder = file.replace(".csv", "");
   const res = await fetch(`${basePath}/data/${file}`);
   const text = await res.text();
   return text
@@ -29,7 +30,7 @@ export async function loadHanjaData(file: string): Promise<HanjaCard[]> {
         hanja: hanja.trim(),
         meaning: meaning.trim(),
         pronunciation: pronunciation.trim(),
-        imagePath: `${basePath}/images/hanja/${id.trim()}.png`,
+        imagePath: `${basePath}/images/hanja/${imageFolder}/${id.trim()}.png`,
       };
     });
 }
