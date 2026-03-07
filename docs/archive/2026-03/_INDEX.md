@@ -14,3 +14,4 @@
 | [HanjaClaude-v10](./HanjaClaude-v10/) | 100% | 0 | 2026-03-07 |
 | [HanjaClaude-v11](./HanjaClaude-v11/) | 100% | 0 | 2026-03-07 |
 | [HanjaClaude-v12](./HanjaClaude-v12/) | 100% | 0 | 2026-03-07 |
+| [HanjaClaude-v13](./HanjaClaude-v13/) | 100% | 0 | 2026-03-07 |

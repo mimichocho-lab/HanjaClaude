@@ -66,7 +66,10 @@ export default function FlipCard({ card, face, onFlip, animated = true }: Props)
               onError={() => setImageError(true)}
             />
           )}
-          <p className="absolute bottom-[8%] max-w-[80%] max-h-[30%] overflow-hidden text-3xl font-bold text-amber-700 text-center">
+          <p
+            className="absolute bottom-[8%] max-w-[80%] max-h-[30%] overflow-hidden font-bold text-amber-700 text-center"
+            style={{ fontSize: 'calc(0.3 * min(90vw, 80vh))' }}
+          >
             {card.meaning} {card.pronunciation}
           </p>
         </div>
