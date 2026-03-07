@@ -1,13 +1,30 @@
 "use client";
 
-import { useState, Suspense } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { loadSetData } from "@/lib/parseHanja";
+import { useDataset } from "@/hooks/useDataset";
 import { usePlayOptions } from "@/hooks/usePlayOptions";
+import type { Dataset } from "@/types/hanja";
 
 function OptionsContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { options, updateOptions } = usePlayOptions();
+
+  const [datasets, setDatasets] = useState<Dataset[]>([]);
+  useEffect(() => {
+    loadSetData()
+      .then((list) => setDatasets(list.sort((a, b) => a.id - b.id)))
+      .catch((err) => console.error("데이터셋 목록 로드 실패:", err));
+  }, []);
+
+  const { selectedDataset, setDataset } = useDataset(datasets);
+
+  const handleDatasetChange = (ds: Dataset) => {
+    setDataset(ds);
+    router.push("/");
+  };
 
   const idsParam = searchParams.get("ids") ?? "";
   const setParam = searchParams.get("set") ?? "";
@@ -32,6 +49,26 @@ function OptionsContent() {
       </div>
 
       <div className="p-4 space-y-4">
+        {/* 데이터셋 선택 (F-v9-03) */}
+        <div className="bg-white rounded-xl p-4 shadow-sm">
+          <p className="text-sm font-semibold text-gray-700 mb-3">학습 셋</p>
+          <div className="flex flex-col gap-2">
+            {datasets.map((ds) => (
+              <button
+                key={ds.id}
+                className={`w-full py-2.5 rounded-lg text-sm font-medium border transition-colors text-left px-3
+                  ${selectedDataset?.id === ds.id
+                    ? "bg-blue-500 text-white border-blue-500"
+                    : "bg-white text-gray-600 border-gray-300"
+                  }`}
+                onClick={() => handleDatasetChange(ds)}
+              >
+                {ds.name}
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* 카드 순서 */}
         <div className="bg-white rounded-xl p-4 shadow-sm">
           <p className="text-sm font-semibold text-gray-700 mb-3">카드 순서</p>

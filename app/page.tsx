@@ -33,16 +33,8 @@ function HomeContent() {
     ? idsParam.split(",").map(Number).filter((n) => n > 0)
     : undefined;
 
-  const { selectedIds, selectedIdsArray, toggleCard, toggleAll, clearSelection } = useSelection(cards, initialIds);
+  const { selectedIds, selectedIdsArray, toggleCard, toggleAll } = useSelection(cards, initialIds);
   const { options } = usePlayOptions();
-
-  const [showPopup, setShowPopup] = useState(false);
-
-  const handleDatasetChange = (dataset: Dataset) => {
-    setDataset(dataset);
-    clearSelection();
-    setShowPopup(false);
-  };
 
   const displayCards = useMemo(() => {
     if (options.homeOrder !== "random") return cards;
@@ -69,43 +61,11 @@ function HomeContent() {
 
   return (
     <div className="pb-24">
-      {/* 팝업 백드롭 */}
-      {showPopup && (
-        <div
-          className="fixed inset-0 z-20"
-          onClick={() => setShowPopup(false)}
-        />
-      )}
-
       {/* 상단 바 */}
       <div className="sticky top-0 bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between z-10">
-        <div className="relative">
-          <button
-            className="text-lg font-bold text-gray-800 flex items-center gap-1 active:opacity-70"
-            onClick={() => setShowPopup((v) => !v)}
-          >
-            {selectedDataset?.name ?? "로딩 중..."}
-            <span className="text-xs text-gray-500">{showPopup ? "▲" : "▼"}</span>
-          </button>
-
-          {/* 데이터셋 선택 팝업 */}
-          {showPopup && (
-            <div className="absolute left-0 top-8 z-30 bg-white rounded-xl shadow-lg border border-gray-200 min-w-[180px]">
-              {datasets.map((ds) => (
-                <button
-                  key={ds.id}
-                  className="w-full text-left px-4 py-3 text-sm flex items-center gap-2 hover:bg-gray-50 first:rounded-t-xl last:rounded-b-xl"
-                  onClick={() => handleDatasetChange(ds)}
-                >
-                  <span className="w-4 text-blue-500">
-                    {selectedDataset?.id === ds.id ? "✓" : ""}
-                  </span>
-                  {ds.name}
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
+        <span className="text-lg font-bold text-gray-800">
+          {selectedDataset?.name ?? "로딩 중..."}
+        </span>
 
         <div className="flex gap-2">
           <button
