@@ -17,24 +17,35 @@ export function getStoredDatasetFile(): string {
   return "hanjab.csv";
 }
 
-export function useDataset(datasets: Dataset[]) {
+export function useDataset(datasets: Dataset[], initialId?: number) {
   const [selectedDataset, setSelectedDataset] = useState<Dataset | null>(null);
 
   useEffect(() => {
     if (datasets.length === 0) return;
+
+    // 1순위: URL 파라미터 (initialId)
+    if (initialId) {
+      const found = datasets.find((d) => d.id === initialId);
+      if (found) {
+        setSelectedDataset(found);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(found));
+        return;
+      }
+    }
+
+    // 2순위: localStorage
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
       try {
         const parsed: Dataset = JSON.parse(stored);
         const found = datasets.find((d) => d.id === parsed.id);
-        if (found) {
-          setSelectedDataset(found);
-          return;
-        }
+        if (found) { setSelectedDataset(found); return; }
       } catch {}
     }
+
+    // 3순위: datasets[0] fallback
     setSelectedDataset(datasets[0]);
-  }, [datasets]);
+  }, [datasets, initialId]);
 
   const setDataset = (dataset: Dataset) => {
     setSelectedDataset(dataset);

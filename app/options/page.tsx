@@ -10,13 +10,14 @@ function OptionsContent() {
   const { options, updateOptions } = usePlayOptions();
 
   const idsParam = searchParams.get("ids") ?? "";
+  const setParam = searchParams.get("set") ?? "";
   const selectedCount = idsParam ? idsParam.split(",").filter(Boolean).length : 0;
 
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
     const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-    const url = `${window.location.origin}${basePath}/?ids=${idsParam}`;
+    const url = `${window.location.origin}${basePath}/?ids=${idsParam}&set=${setParam}`;
     await navigator.clipboard.writeText(url);
     setCopied(true);
     setTimeout(() => setCopied(false), 1500);
@@ -129,7 +130,7 @@ function OptionsContent() {
           <p className="text-sm font-semibold text-gray-700 mb-2">선택 목록 URL 복사</p>
           <div className="flex gap-2 items-center">
             <p className="flex-1 text-xs text-gray-500 bg-gray-50 rounded-lg px-3 py-2 font-mono truncate">
-              {idsParam ? `…/?ids=${idsParam}` : "선택된 카드 없음"}
+              {idsParam ? `…/?ids=${idsParam}&set=${setParam}` : "선택된 카드 없음"}
             </p>
             <button
               className="px-3 py-2 rounded-lg text-sm border border-gray-300 text-gray-600 active:bg-gray-100 flex-shrink-0"

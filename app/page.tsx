@@ -22,7 +22,10 @@ function HomeContent() {
       .catch((err) => console.error("데이터셋 목록 로드 실패:", err));
   }, []);
 
-  const { selectedDataset, setDataset } = useDataset(datasets);
+  const setParam = searchParams.get("set");
+  const initialSetId = setParam ? Number(setParam) : undefined;
+
+  const { selectedDataset, setDataset } = useDataset(datasets, initialSetId);
   const { cards, loading } = useHanjaData(selectedDataset?.file ?? "hanjab.csv");
 
   const idsParam = searchParams.get("ids");
@@ -113,7 +116,7 @@ function HomeContent() {
           </button>
           <button
             className="text-sm px-3 py-1.5 rounded-lg border border-gray-300 text-gray-600 active:bg-gray-100"
-            onClick={() => router.push(`/options?ids=${selectedIdsArray.join(",")}`)}
+            onClick={() => router.push(`/options?ids=${selectedIdsArray.join(",")}&set=${selectedDataset?.id ?? ""}`)}
           >
             설정
           </button>
