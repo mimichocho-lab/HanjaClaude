@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-03-07T10:33:14.260Z",
+  "lastUpdated": "2026-03-07T11:00:00.000Z",
   "activeFeatures": [
     "HanjaClaude",
     "hanjaclaude",
@@ -18,6 +18,14 @@
       "startedAt": "2026-03-06T16:07:08.621Z",
       "archivedAt": "2026-03-07T00:00:00.000Z",
       "archivedTo": "docs/archive/2026-03/HanjaClaude-v5/"
+    },
+    "HanjaClaude-v10": {
+      "phase": "archived",
+      "matchRate": 100,
+      "iterationCount": 0,
+      "startedAt": "2026-03-07T10:04:06.124Z",
+      "archivedAt": "2026-03-07T11:00:00.000Z",
+      "archivedTo": "docs/archive/2026-03/HanjaClaude-v10/"
     },
     "hanjaclaude": {
       "phase": "do",
