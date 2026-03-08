@@ -1,15 +1,15 @@
 번호,이름,데이터
 1,구몬 한자 B,hanjab.csv
 2,구몬 한자 C,hanjac.csv
-3,구몬 한자 D I(예정),hanjadi.csv
-4,구몬 한자 D II(예정),hanjadii.csv
-5,구몬 한자 E I(예정),hanjaei.csv
-6,구몬 한자 E II(예정),hanjaeii.csv
+3,구몬 한자 D I,hanjadi.csv
+4,구몬 한자 D II(확인),hanjadii.csv
+5,구몬 한자 E I,hanjaei.csv
+6,구몬 한자 E II,hanjaeii.csv
 7,구몬 한자 F I(예정),hanjafi.csv
 8,구몬 한자 F II(예정),hanjafii.csv
 9,구몬 한자 G(예정),hanjag.csv
 10,구몬 한자 H(예정),hanjah.csv
-11,구몬 한자 I(예정),hanjai.csv
+11,구몬 한자 I,hanjai.csv
 12,구몬 한자 J(예정),hanjaj.csv
 13,구몬 한자 K(예정),hanjak.csv
 31,8급 신출 한자,grade8.csv
