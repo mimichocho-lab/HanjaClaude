@@ -22,6 +22,9 @@ function OptionsContent() {
   const { selectedDataset, setDataset } = useDataset(datasets);
 
   const handleDatasetChange = (ds: Dataset) => {
+    if (selectedDataset?.id !== ds.id) {
+      localStorage.removeItem("hanjaSelectedIds");
+    }
     setDataset(ds);
     router.push("/");
   };
