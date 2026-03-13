@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import type { HanjaCard, CardFace, HanjaFont } from "@/types/hanja";
 
-const HANJA_FONT_FAMILY: Record<HanjaFont, string> = {
+export const HANJA_FONT_FAMILY: Record<HanjaFont, string> = {
   haeseo:   "var(--font-haeseo)",
   myeongjo: "var(--font-myeongjo)",
   gungseo:  "var(--font-gungseo)",

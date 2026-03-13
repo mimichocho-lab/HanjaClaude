@@ -92,6 +92,7 @@ function HomeContent() {
             selected={selectedIds.has(card.id)}
             onTap={() => toggleCard(card.id)}
             showMeaning={options.showMeaning}
+            hanjaFont={options.hanjaFont}
           />
         ))}
       </div>

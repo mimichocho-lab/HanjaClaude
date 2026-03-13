@@ -84,6 +84,7 @@ export default function WrongPage() {
               onDelete={() => removeWrongId(card.id)}
               onLongPress={() => setDeleteMode(true)}
               showMeaning={options.showMeaning}
+              hanjaFont={options.hanjaFont}
             />
           ))}
         </div>

@@ -12,6 +12,14 @@ export function usePlayOptions() {
   useEffect(() => {
     const stored = localStorage.getItem(KEY);
     if (stored) setOptions({ ...DEFAULT, ...JSON.parse(stored) });
+
+    const handleStorage = (e: StorageEvent) => {
+      if (e.key === KEY && e.newValue) {
+        setOptions({ ...DEFAULT, ...JSON.parse(e.newValue) });
+      }
+    };
+    window.addEventListener("storage", handleStorage);
+    return () => window.removeEventListener("storage", handleStorage);
   }, []);
 
   const updateOptions = (next: Partial<PlayOptions>) => {
