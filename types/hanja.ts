@@ -14,9 +14,12 @@ export interface HanjaCard {
 
 export type CardFace = "front" | "back";
 
+export type HanjaFont = "haeseo" | "myeongjo" | "gungseo";
+
 export interface PlayOptions {
   order: "sequential" | "random";
   startFace: "front" | "back" | "random";
   showMeaning: boolean;
   homeOrder: "sequential" | "random";
+  hanjaFont: HanjaFont;
 }

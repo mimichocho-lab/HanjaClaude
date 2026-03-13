@@ -107,7 +107,7 @@ function PlayContent() {
 
       {/* 카드 영역 */}
       <div className="flex-1 flex flex-col items-center justify-center px-6 py-8">
-        <FlipCard card={currentCard} face={face} onFlip={flipCard} animated={animated} />
+        <FlipCard card={currentCard} face={face} onFlip={flipCard} animated={animated} hanjaFont={options.hanjaFont} />
       </div>
 
       {/* 하단 버튼 */}

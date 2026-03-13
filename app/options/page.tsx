@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { loadSetData } from "@/lib/parseHanja";
 import { useDataset } from "@/hooks/useDataset";
 import { usePlayOptions } from "@/hooks/usePlayOptions";
-import type { Dataset } from "@/types/hanja";
+import type { Dataset, HanjaFont } from "@/types/hanja";
 
 function OptionsContent() {
   const router = useRouter();
@@ -112,6 +112,30 @@ function OptionsContent() {
                     : "bg-white text-gray-600 border-gray-300"
                   }`}
                 onClick={() => updateOptions({ startFace: opt.value as "front" | "back" | "random" })}
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* 한자 서체 */}
+        <div className="bg-white rounded-xl p-4 shadow-sm">
+          <p className="text-sm font-semibold text-gray-700 mb-3">한자 서체</p>
+          <div className="flex gap-3">
+            {[
+              { value: "haeseo",   label: "해서체" },
+              { value: "myeongjo", label: "명조체" },
+              { value: "gungseo",  label: "궁서체" },
+            ].map((opt) => (
+              <button
+                key={opt.value}
+                className={`flex-1 py-2.5 rounded-lg text-sm font-medium border transition-colors
+                  ${options.hanjaFont === opt.value
+                    ? "bg-blue-500 text-white border-blue-500"
+                    : "bg-white text-gray-600 border-gray-300"
+                  }`}
+                onClick={() => updateOptions({ hanjaFont: opt.value as HanjaFont })}
               >
                 {opt.label}
               </button>
