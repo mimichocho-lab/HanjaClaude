@@ -1,7 +1,6 @@
 "use client";
 
-import type { HanjaCard, HanjaFont } from "@/types/hanja";
-import { HANJA_FONT_FAMILY } from "@/components/FlipCard";
+import type { HanjaCard } from "@/types/hanja";
 
 interface Props {
   card: HanjaCard;
@@ -11,7 +10,7 @@ interface Props {
   deleteMode?: boolean;
   onDelete?: () => void;
   showMeaning?: boolean;
-  hanjaFont?: HanjaFont;
+  fontFamily?: string;
 }
 
 export default function HanjaCardCell({
@@ -22,7 +21,7 @@ export default function HanjaCardCell({
   deleteMode = false,
   onDelete,
   showMeaning = true,
-  hanjaFont = "haeseo",
+  fontFamily,
 }: Props) {
   let pressTimer: ReturnType<typeof setTimeout> | null = null;
 
@@ -51,7 +50,7 @@ export default function HanjaCardCell({
       </span>
 
       {/* 한자 */}
-      <span className="text-3xl font-bold text-gray-800" style={{ fontFamily: HANJA_FONT_FAMILY[hanjaFont] }}>{card.hanja}</span>
+      <span className="text-3xl font-bold text-gray-800" style={{ fontFamily }}>{card.hanja}</span>
 
       {/* 뜻음 */}
       {showMeaning && (

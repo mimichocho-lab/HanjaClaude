@@ -2,14 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Noto+Serif+KR:wght@400&family=Ma+Shan+Zheng&display=swap');
-
-:root {
-  --font-haeseo:   'Noto Sans KR', sans-serif;
-  --font-myeongjo: 'Noto Serif KR', serif;
-  --font-gungseo:  'Ma Shan Zheng', cursive;
-}
-
 html, body {
   overscroll-behavior: none;
 }

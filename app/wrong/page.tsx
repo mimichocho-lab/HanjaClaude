@@ -6,6 +6,8 @@ import { useHanjaData } from "@/hooks/useHanjaData";
 import { getStoredDatasetFile } from "@/hooks/useDataset";
 import { useWrongAnswers } from "@/hooks/useWrongAnswers";
 import { usePlayOptions } from "@/hooks/usePlayOptions";
+import { useFontData } from "@/hooks/useFontData";
+import { useFontLoader } from "@/hooks/useFontLoader";
 import HanjaCardCell from "@/components/HanjaCard";
 
 export default function WrongPage() {
@@ -13,6 +15,8 @@ export default function WrongPage() {
   const { cards: allCards, loading } = useHanjaData(getStoredDatasetFile());
   const { wrongIds, removeWrongId } = useWrongAnswers();
   const { options } = usePlayOptions();
+  const fonts = useFontData();
+  const fontFamily = useFontLoader(fonts, options.hanjaFontId);
   const [deleteMode, setDeleteMode] = useState(false);
 
   const wrongCards = allCards.filter((c) => wrongIds.includes(c.id));
@@ -84,7 +88,7 @@ export default function WrongPage() {
               onDelete={() => removeWrongId(card.id)}
               onLongPress={() => setDeleteMode(true)}
               showMeaning={options.showMeaning}
-              hanjaFont={options.hanjaFont}
+              fontFamily={fontFamily}
             />
           ))}
         </div>

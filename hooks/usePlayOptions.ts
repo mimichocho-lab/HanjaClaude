@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import type { PlayOptions } from "@/types/hanja";
 
 const KEY = "hanjaPlayOptions";
-const DEFAULT: PlayOptions = { order: "sequential", startFace: "front", showMeaning: true, homeOrder: "sequential", hanjaFont: "haeseo" };
+const DEFAULT: PlayOptions = { order: "sequential", startFace: "front", showMeaning: true, homeOrder: "sequential", hanjaFontId: 1 };
 
 export function usePlayOptions() {
   const [options, setOptions] = useState<PlayOptions>(DEFAULT);

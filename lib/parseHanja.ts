@@ -1,4 +1,18 @@
-import type { Dataset, HanjaCard } from "@/types/hanja";
+import type { Dataset, HanjaCard, FontEntry } from "@/types/hanja";
+
+export async function loadFontData(): Promise<FontEntry[]> {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  const res = await fetch(`${basePath}/data/font.csv`);
+  const text = await res.text();
+  return text
+    .trim()
+    .split("\n")
+    .slice(1)
+    .map((line) => {
+      const [id, name, file] = line.split(",");
+      return { id: Number(id), name: name.trim(), file: file.trim() };
+    });
+}
 
 export async function loadSetData(): Promise<Dataset[]> {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";

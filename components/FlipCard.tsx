@@ -2,23 +2,17 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import type { HanjaCard, CardFace, HanjaFont } from "@/types/hanja";
-
-export const HANJA_FONT_FAMILY: Record<HanjaFont, string> = {
-  haeseo:   "var(--font-haeseo)",
-  myeongjo: "var(--font-myeongjo)",
-  gungseo:  "var(--font-gungseo)",
-};
+import type { HanjaCard, CardFace } from "@/types/hanja";
 
 interface Props {
   card: HanjaCard;
   face: CardFace;
   onFlip: () => void;
   animated?: boolean;
-  hanjaFont?: HanjaFont;
+  fontFamily?: string;
 }
 
-export default function FlipCard({ card, face, onFlip, animated = true, hanjaFont = "haeseo" }: Props) {
+export default function FlipCard({ card, face, onFlip, animated = true, fontFamily }: Props) {
   const isFlipped = face === "back";
   const [imageError, setImageError] = useState(false);
   const meaningRef = useRef<HTMLParagraphElement>(null);
@@ -60,7 +54,7 @@ export default function FlipCard({ card, face, onFlip, animated = true, hanjaFon
           </span>
           <span
             className="font-bold text-gray-800"
-            style={{ fontSize: 'calc(0.8 * min(90vw, 80vh))', fontFamily: HANJA_FONT_FAMILY[hanjaFont] }}
+            style={{ fontSize: 'calc(0.8 * min(90vw, 80vh))', fontFamily }}
           >
             {card.hanja}
           </span>

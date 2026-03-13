@@ -6,6 +6,8 @@ import { useHanjaData } from "@/hooks/useHanjaData";
 import { getStoredDatasetFile } from "@/hooks/useDataset";
 import { useWrongAnswers } from "@/hooks/useWrongAnswers";
 import { usePlayOptions } from "@/hooks/usePlayOptions";
+import { useFontData } from "@/hooks/useFontData";
+import { useFontLoader } from "@/hooks/useFontLoader";
 import { usePlaySession } from "@/hooks/usePlaySession";
 import FlipCard from "@/components/FlipCard";
 import ProgressBar from "@/components/ProgressBar";
@@ -18,6 +20,8 @@ function PlayContent() {
   const { cards: allCards, loading } = useHanjaData(datasetFile);
   const { wrongIds, addWrongId, removeWrongId } = useWrongAnswers();
   const { options } = usePlayOptions();
+  const fonts = useFontData();
+  const fontFamily = useFontLoader(fonts, options.hanjaFontId);
   const [filteredCards, setFilteredCards] = useState<HanjaCard[]>([]);
 
   useEffect(() => {
@@ -107,7 +111,7 @@ function PlayContent() {
 
       {/* 카드 영역 */}
       <div className="flex-1 flex flex-col items-center justify-center px-6 py-8">
-        <FlipCard card={currentCard} face={face} onFlip={flipCard} animated={animated} hanjaFont={options.hanjaFont} />
+        <FlipCard card={currentCard} face={face} onFlip={flipCard} animated={animated} fontFamily={fontFamily} />
       </div>
 
       {/* 하단 버튼 */}

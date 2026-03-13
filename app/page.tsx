@@ -7,6 +7,8 @@ import { useHanjaData } from "@/hooks/useHanjaData";
 import { useDataset } from "@/hooks/useDataset";
 import { useSelection } from "@/hooks/useSelection";
 import { usePlayOptions } from "@/hooks/usePlayOptions";
+import { useFontData } from "@/hooks/useFontData";
+import { useFontLoader } from "@/hooks/useFontLoader";
 import HanjaCardCell from "@/components/HanjaCard";
 import BottomBar from "@/components/BottomBar";
 import type { Dataset } from "@/types/hanja";
@@ -35,6 +37,8 @@ function HomeContent() {
 
   const { selectedIds, selectedIdsArray, toggleCard, toggleAll } = useSelection(cards, initialIds);
   const { options } = usePlayOptions();
+  const fonts = useFontData();
+  const fontFamily = useFontLoader(fonts, options.hanjaFontId);
 
   const displayCards = useMemo(() => {
     if (options.homeOrder !== "random") return cards;
@@ -92,7 +96,7 @@ function HomeContent() {
             selected={selectedIds.has(card.id)}
             onTap={() => toggleCard(card.id)}
             showMeaning={options.showMeaning}
-            hanjaFont={options.hanjaFont}
+            fontFamily={fontFamily}
           />
         ))}
       </div>

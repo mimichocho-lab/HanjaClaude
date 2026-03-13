@@ -5,12 +5,14 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { loadSetData } from "@/lib/parseHanja";
 import { useDataset } from "@/hooks/useDataset";
 import { usePlayOptions } from "@/hooks/usePlayOptions";
-import type { Dataset, HanjaFont } from "@/types/hanja";
+import { useFontData } from "@/hooks/useFontData";
+import type { Dataset } from "@/types/hanja";
 
 function OptionsContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { options, updateOptions } = usePlayOptions();
+  const fonts = useFontData();
 
   const [datasets, setDatasets] = useState<Dataset[]>([]);
   useEffect(() => {
@@ -119,25 +121,21 @@ function OptionsContent() {
           </div>
         </div>
 
-        {/* 한자 서체 */}
+        {/* 한자 폰트 */}
         <div className="bg-white rounded-xl p-4 shadow-sm">
-          <p className="text-sm font-semibold text-gray-700 mb-3">한자 서체</p>
-          <div className="flex gap-3">
-            {[
-              { value: "haeseo",   label: "해서체" },
-              { value: "myeongjo", label: "명조체" },
-              { value: "gungseo",  label: "궁서체" },
-            ].map((opt) => (
+          <p className="text-sm font-semibold text-gray-700 mb-3">한자 폰트</p>
+          <div className="flex flex-wrap gap-2">
+            {fonts.map((font) => (
               <button
-                key={opt.value}
+                key={font.id}
                 className={`flex-1 py-2.5 rounded-lg text-sm font-medium border transition-colors
-                  ${options.hanjaFont === opt.value
+                  ${options.hanjaFontId === font.id
                     ? "bg-blue-500 text-white border-blue-500"
                     : "bg-white text-gray-600 border-gray-300"
                   }`}
-                onClick={() => updateOptions({ hanjaFont: opt.value as HanjaFont })}
+                onClick={() => updateOptions({ hanjaFontId: font.id })}
               >
-                {opt.label}
+                {font.name}
               </button>
             ))}
           </div>
